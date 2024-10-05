@@ -1,0 +1,74 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cm1p3sauq1881"]
+
+[ext_resource type="FontFile" uid="uid://ba2axfcfddt0e" path="res://assets/fonds/SmileySans-Oblique.otf" id="1_cm5ww"]
+[ext_resource type="Texture2D" uid="uid://c013nil4lll4k" path="res://assets/legacy_fantasy/HUD.png" id="1_ogu4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwjly"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8oc54"]
+texture = ExtResource("1_ogu4d")
+texture_margin_left = 17.0
+texture_margin_top = 3.0
+texture_margin_right = 17.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(94, 14, 20, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwgha"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfivq"]
+atlas = ExtResource("1_ogu4d")
+region = Rect2(3, 130, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ya2h"]
+atlas = ExtResource("1_ogu4d")
+region = Rect2(19, 130, 11, 11)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rv2ah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egeog"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i740v"]
+texture = ExtResource("1_ogu4d")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(95, 159, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mq1ly"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_ogu4d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(64, 64, 16, 16)
+
+[resource]
+default_font = ExtResource("1_cm5ww")
+Button/colors/font_outline_color = Color(0, 0, 0, 0.8)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.568627)
+Button/constants/outline_size = 6
+Button/styles/disabled = SubResource("StyleBoxEmpty_dwjly")
+Button/styles/focus = SubResource("StyleBoxTexture_8oc54")
+Button/styles/hover = SubResource("StyleBoxEmpty_hwgha")
+Button/styles/normal = SubResource("StyleBoxEmpty_hwgha")
+Button/styles/pressed = SubResource("StyleBoxEmpty_hwgha")
+HSlider/icons/grabber = SubResource("AtlasTexture_hfivq")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_8ya2h")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_rv2ah")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_egeog")
+HSlider/styles/slider = SubResource("StyleBoxTexture_i740v")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.603922)
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_mq1ly")
