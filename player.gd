@@ -8,7 +8,7 @@ var is_commbo_requested := false
 var pending_damage: Damage
 var fall_from_y: float
 var interacting_with : Array[Interactable]
-
+var bullteDirection = Vector2(1, 0)
 
 enum  Direction {
 	LEFT = -1,
@@ -53,6 +53,7 @@ const SLIDING_DURATION := 0.3
 const SLIDING_SPEED := 300.0
 const LANDING_HIGHT := 100.0
 const SLIDING_ENERGT := 40.0
+const BULLTE = preload("res://objects/bullet.tscn")
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -71,6 +72,7 @@ const SLIDING_ENERGT := 40.0
 @onready var attack: AudioStreamPlayer = $Attack
 @onready var jump: AudioStreamPlayer = $Jump
 @onready var pause_screen: Control = $CanvasLayer/PauseScreen
+@onready var buttle_mark: Marker2D = $Graphics/ButtleMark
 
 # 这个地方不应该和敌人公用 先这么写吧
 func _ready() -> void:
@@ -332,6 +334,13 @@ func transition_state(from: State, to: State) -> void:
 		State.ATTACK_1:
 			animation_player.play("attack_1")
 			SoundManager.play_sfx("Attack")
+			
+			var bullteNode = BULLTE.instantiate()
+			bullteDirection.x = direction
+			bullteNode.set_direction(bullteDirection)
+			get_tree().root.add_child(bullteNode)
+			bullteNode.global_position = buttle_mark.global_position
+			
 			is_commbo_requested = false
 		State.ATTACK_2:
 			animation_player.play("attack_2")

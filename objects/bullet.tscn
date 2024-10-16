@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdwphobe6e22m"]
+[gd_scene load_steps=5 format=3 uid="uid://bdwphobe6e22m"]
 
+[ext_resource type="Script" path="res://objects/bullet.gd" id="1_1im7v"]
 [ext_resource type="Texture2D" uid="uid://crh87g27yp2el" path="res://assets/Assets/Props-Rocks.png" id="1_bqogo"]
+[ext_resource type="Script" path="res://classes/Hitbox.gd" id="3_xoaot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hls23"]
 
 [node name="bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_1im7v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -12,5 +17,15 @@ texture = ExtResource("1_bqogo")
 region_enabled = true
 region_rect = Rect2(134, 113, 42, 47)
 
+[node name="Hitbox1" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_xoaot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox1"]
+shape = SubResource("CircleShape2D_hls23")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hls23")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

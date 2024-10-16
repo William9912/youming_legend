@@ -570,7 +570,7 @@ _data = {
 "walk": SubResource("Animation_4ih4q")
 }
 
-[node name="Boar" instance=ExtResource("1_4fks5")]
+[node name="Boar" groups=["enemy"] instance=ExtResource("1_4fks5")]
 script = ExtResource("2_7r0sj")
 max_health_boar = 5
 

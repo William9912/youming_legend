@@ -109,7 +109,7 @@ func transition_state(from: State, to: State) -> void:
 			
 
 
-func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
+func _on_hurtbox_hurt(hitbox: Hitbox1) -> void:
 	print("ouch !!!") # Replace with function body.
 	pending_damage = Damage.new()
 	pending_damage.amount = 1

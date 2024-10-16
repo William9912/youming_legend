@@ -2518,6 +2518,9 @@ direction = -1
 
 [node name="Graphics" type="Node2D" parent="."]
 
+[node name="ButtleMark" type="Marker2D" parent="Graphics"]
+position = Vector2(14, -21)
+
 [node name="Sprite2D" type="Sprite2D" parent="Graphics"]
 position = Vector2(0, -28)
 texture = ExtResource("1_rjaws")
