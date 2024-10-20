@@ -1028,10 +1028,6 @@ region_rect = Rect2(0, 0, 2304, 128)
 position = Vector2(-10, -15)
 target_position = Vector2(-11, 0)
 
-[node name="FlashChecker" type="RayCast2D" parent="Graphics"]
-position = Vector2(3, -2)
-target_position = Vector2(0, -94)
-
 [node name="PlayChecker" type="RayCast2D" parent="Graphics"]
 position = Vector2(-10, -15)
 target_position = Vector2(-67, 0)
