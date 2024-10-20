@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu4jkoq6g6gey"]
+[gd_scene load_steps=13 format=3 uid="uid://bu4jkoq6g6gey"]
 
 [ext_resource type="Script" path="res://worlds/world.gd" id="1_ijycu"]
 [ext_resource type="TileSet" uid="uid://cf35bv0eu1yon" path="res://assets/tiles.tres" id="2_gf8id"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dlseajebdgux8" path="res://assets/legacy_fantasy/Background/Background.png" id="6_qnlng"]
 [ext_resource type="Texture2D" uid="uid://nirok5r4wyri" path="res://assets/legacy_fantasy/Trees/Background.png" id="7_m6kpt"]
 [ext_resource type="PackedScene" uid="uid://2fjj8ql0gbu8" path="res://enemies/boar.tscn" id="8_m4k5s"]
+[ext_resource type="PackedScene" uid="uid://dx4lb456gihg7" path="res://enemies/fire_knight.tscn" id="12_p5su5"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ijycu")
@@ -62,8 +63,8 @@ drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
 [node name="Decorations" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Decorations"]
 
@@ -257,3 +258,6 @@ position = Vector2(191, -3)
 
 [node name="Boar2" parent="." instance=ExtResource("8_m4k5s")]
 position = Vector2(150, 171)
+
+[node name="FireKnight" parent="." instance=ExtResource("12_p5su5")]
+position = Vector2(384, 143)
