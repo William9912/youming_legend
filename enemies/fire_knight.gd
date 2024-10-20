@@ -10,6 +10,7 @@ signal died
 
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var main_ms: LimboHSM
+var targets : Array[Player]
 
 @export var direction := Direction.LEFT:
 	set(v):
@@ -17,7 +18,7 @@ var main_ms: LimboHSM
 		# 素材朝左 右才需要翻转
 		if not is_node_ready():
 			await ready 
-		graphics.scale.x = -direction
+		graphics.scale.x = direction
 		
 @export var max_speed: float = 180
 @export var acceleration: float = 2000
@@ -27,6 +28,8 @@ var main_ms: LimboHSM
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 # todo 敌人和玩家应该有区分
 @onready var enemy_stats: Stats = $EnemyStats
+@onready var detector: Area2D = $Graphics/detector
+
 
 func can_see_player() -> bool:
 	if not play_checker.is_colliding():
@@ -36,11 +39,14 @@ func can_see_player() -> bool:
 
 func _ready() -> void:
 	add_to_group("enemies")
+	initate_state_machine()
+	detector.detected.connect(_on_detected_player)
 	
 func move(speed: float, delta: float) -> void:
-	velocity.x  = move_toward(velocity.x, speed * direction, acceleration * delta) #direction * RUN_SPEED
+	velocity.x = move_toward(velocity.x, speed * direction, acceleration * delta) #direction * RUN_SPEED
 	# 这个velocity的单位是像素每秒 所以Y += 的话 其实满足现实的重力加速度	
 	velocity.y += default_gravity * delta
+	print(velocity)
 	move_and_slide()
 
 func die() -> void:
@@ -48,7 +54,7 @@ func die() -> void:
 	queue_free()
 	
 func _physics_process(delta: float) -> void:
-	move(max_speed/2, delta)
+	move(max_speed, delta)
 
 func initate_state_machine():
 	main_ms = LimboHSM.new()
@@ -73,26 +79,37 @@ func initate_state_machine():
 	main_ms.set_active(true)
 
 func idle_start():
-	animation_player.play("walk")
+	animation_player.play("idle")
 
-func idle_update():
-	if velocity.x != 0:
+func idle_update(delta: float):
+	if len(targets) != 0:
 		main_ms.dispatch(&"to_walk")
 
 func walk_start():
-	pass
+	animation_player.play("run")
 
-func walk_update():
-	pass
+func walk_update(delta: float):
+	var dirx = ( targets.back().global_position - global_position).x
+	if dirx < 20:
+		main_ms.dispatch(&"state_ended")
+	if dirx < 0:
+		direction = Direction.LEFT
+	else:
+		direction = Direction.RIGHT
+
 
 func jump_start():
 	pass
 
-func jump_update():
+func jump_update(delta: float):
 	pass
 	
 func attack_start():
 	pass
 
-func attack_update():
+func attack_update(delta: float):
 	pass
+
+func _on_detected_player(hurtbox: Hurtbox1) -> void:
+	print("_on_detected_player") # Replace with function body.
+	targets.append(hurtbox.owner)

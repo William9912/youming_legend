@@ -5,15 +5,13 @@
 [ext_resource type="Script" path="res://classes/Hitbox.gd" id="2_2w080"]
 [ext_resource type="Script" path="res://classes/Hurtbox.gd" id="3_hd5s4"]
 [ext_resource type="Script" path="res://classes/Stats.gd" id="4_rnx8p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ekj"]
-size = Vector2(22, 21.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sl3v"]
-size = Vector2(38, 8)
+[ext_resource type="Script" path="res://enemies/detector.gd" id="5_u3wp8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_blhdk"]
 height = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hem76"]
+radius = 233.054
 
 [sub_resource type="Animation" id="Animation_byv35"]
 length = 0.001
@@ -1043,14 +1041,6 @@ collision_layer = 0
 collision_mask = 8
 script = ExtResource("2_2w080")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Hitbox"]
-position = Vector2(-1, -11)
-shape = SubResource("RectangleShape2D_c2ekj")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/Hitbox"]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_2sl3v")
-
 [node name="Hurtbox" type="Area2D" parent="Graphics"]
 collision_layer = 16
 collision_mask = 0
@@ -1061,6 +1051,15 @@ metadata/_edit_lock_ = true
 position = Vector2(3, -22)
 shape = SubResource("CapsuleShape2D_blhdk")
 metadata/_edit_lock_ = true
+
+[node name="detector" type="Area2D" parent="Graphics"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("5_u3wp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/detector"]
+position = Vector2(2, -22)
+shape = SubResource("CircleShape2D_hem76")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

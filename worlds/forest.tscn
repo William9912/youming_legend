@@ -260,4 +260,4 @@ position = Vector2(191, -3)
 position = Vector2(150, 171)
 
 [node name="FireKnight" parent="." instance=ExtResource("12_p5su5")]
-position = Vector2(-48, 121)
+position = Vector2(384, 143)
