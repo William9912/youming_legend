@@ -2603,17 +2603,22 @@ script = ExtResource("3_ha4f3")
 layer = 20
 
 [node name="StatusPanel" parent="CanvasLayer" instance=ExtResource("8_ufe8i")]
+visible = false
 offset_left = 1.0
 offset_right = 89.0
 
 [node name="VirtualJoypad" parent="CanvasLayer" instance=ExtResource("8_fmmpl")]
+visible = false
 modulate = Color(1, 1, 1, 0.603922)
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("8_e54je")]
+visible = false
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_v2s03")]
+visible = false
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -44)
 sprite_frames = SubResource("SpriteFrames_bqryl")
 autoplay = "default"

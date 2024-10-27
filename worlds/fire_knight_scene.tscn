@@ -1,18 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://c31u5rw5wgx04"]
+[gd_scene load_steps=6 format=3 uid="uid://c31u5rw5wgx04"]
 
+[ext_resource type="Script" path="res://worlds/fire_knight_scene.gd" id="1_gaq8k"]
 [ext_resource type="TileSet" uid="uid://cf35bv0eu1yon" path="res://assets/tiles.tres" id="1_si7i5"]
 [ext_resource type="PackedScene" uid="uid://bxabsmm45eimk" path="res://objects/mine_gate.tscn" id="2_mofic"]
+[ext_resource type="Script" path="res://classes/EntryPoint.gd" id="3_5k1mv"]
+[ext_resource type="PackedScene" uid="uid://ddqhnkkkti4xw" path="res://player.tscn" id="4_1bgjq"]
 
 [node name="FireKnightScene" type="Node2D"]
+position = Vector2(6, 0)
+script = ExtResource("1_gaq8k")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_si7i5")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 327680, 2, 65536, 524288, 0, 131072, 524288, 1, 196608, 0, 2, 262144, 0, 3, 327680, 0, 2, 393216, 458752, 1, 458752, 0, 2, 524288, 0, 3, 524289, 262144, 2, 589825, 262144, 2, 655361, 262144, 2, 720896, 524288, 0, 786432, 0, 4, 655360, 458752, 1, 589824, 0, 3, 327681, 327680, 1, 262145, 262144, 3, 196609, 262144, 2, 131073, 655360, 1, 65537, 262144, 2, 1, 262144, 0, -65535, 0, 4, 393217, 262144, 3, 458753, 262144, 2, 786433, 458752, 0, 720897, 327680, 2, 720898, 262144, 0, 786434, 327680, 2, 786435, 196608, 0, 786436, 131072, 0, 786437, 131072, 0, 786438, 196608, 0, 851967, 262144, 4, 851970, 196608, 4, 851969, 0, 4, 851971, 131072, 4, 851972, 393216, 0, 851973, 65536, 4, 851974, 196608, 4, 851975, 393216, 0, 851976, 393216, 0, 851977, 131072, 4, 786439, 393216, 1, 851978, 393216, 0, 786440, 393216, 1, 851979, 393216, 0, 786441, 393216, 1, 851980, 196608, 4, 786442, 393216, 1, 851981, 196608, 4, 786443, 393216, 1, 851982, 65536, 4, 786444, 393216, 1, 851983, 393216, 0, 786445, 393216, 1, 851984, 196608, 4, 786446, 393216, 1, 851985, 393216, 0, 851986, 458752, 0, 786451, 196608, 3, 786452, 131072, 2, 786453, 131072, 2, 786454, 65536, 2, 786455, 65536, 3, 786456, 196608, 2, 786447, 393216, 1, 786448, 196608, 0, 851987, 131072, 3, 851988, 196608, 3, 786457, 327680, 0, 851991, 458752, 0, 851990, 393216, 0, 786458, 262144, 4, 786459, 0, 4, 720924, 0, 0, 720925, 262144, 4, 786460, 65536, 4, 851989, 327680, 0, 917522, 0, 4, 786449, 196608, 0, 720920, 65536, 3, 655385, 65536, 3, 589849, 131073, 2, 524313, 131072, 2, 458777, 131072, 2, 393241, 65536, 2, 327705, 131072, 3, 262170, 262144, 4, 196634, 262144, 0, 720921, 196608, 2, 655384, 131072, 2, 589848, 65536, 2, 262169, 65536, 2, 196633, 327680, 2, 131097, 327680, 0, 65561, 196608, 3, 25, 458752, 2, -65511, 0, 0, 524312, 65536, 2, 458776, 131072, 2, 393240, 65536, 3, 327704, 65536, 3, 262168, 196608, 3, 196632, 65536, 3, 131096, 65536, 3, 65560, 131072, 2, 458775, 458752, 1, 524311, 524288, 1, 589847, 0, 3, 655383, 0, 3, 393239, 0, 2, 327703, 0, 3, 262167, 458752, 1, 196631, 0, 3, 131095, 524288, 1, 65559, 0, 2, 23, 0, 0, 24, 196608, 0, 917527, 0, 4, 720917, 131072, 0, 720918, 196608, 0, 720919, 458752, 2, 720916, 327680, 2, 720915, 458752, 2, 720914, 0, 0, 786450, 458752, 2, 917523, 196608, 4, 917524, 196608, 4, 917525, 262144, 4, 851992, 196608, 4, 851993, 262144, 4, 720922, 262144, 2, 655386, 65536, 2, 655387, 327680, 1, 589851, 262144, 0, 589850, 327680, 2, 524314, 655360, 1, 458778, 655360, 1)
 
-[node name="MineGate" parent="TileMap" instance=ExtResource("2_mofic")]
-position = Vector2(310, 105)
-
 [node name="MineGate2" parent="TileMap" instance=ExtResource("2_mofic")]
 position = Vector2(69, 115)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
+path = "res://worlds/forest.tscn"
+entry_point = "TopEntry"
+
+[node name="MineGate" parent="TileMap" instance=ExtResource("2_mofic")]
+position = Vector2(310, 105)
+path = "res://worlds/cave.tscn"
+entry_point = "CaveEntity"
+
+[node name="LeftFireEntryPoint" type="Marker2D" parent="TileMap"]
+position = Vector2(85, 165)
+script = ExtResource("3_5k1mv")
+
+[node name="RightFireEntryPoint" type="Marker2D" parent="TileMap"]
+position = Vector2(301, 159)
+script = ExtResource("3_5k1mv")
+
+[node name="Player" parent="." instance=ExtResource("4_1bgjq")]
+position = Vector2(261, 178)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -16)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true

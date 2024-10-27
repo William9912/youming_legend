@@ -31,8 +31,8 @@ layer_2/tile_data = PackedInt32Array(655364, 524288, 2, 655366, 589824, 2, 65537
 [node name="MineGate" parent="TileMap" instance=ExtResource("3_77wa5")]
 position = Vector2(-94, 18)
 scale = Vector2(-1, 1)
-path = "res://worlds/cave.tscn"
-entry_point = "CaveEntity"
+path = "res://worlds/fire_knight_scene.tscn"
+entry_point = "LeftFireEntryPoint"
 
 [node name="MineGate2" parent="TileMap" instance=ExtResource("3_77wa5")]
 position = Vector2(431, 36)
@@ -52,7 +52,7 @@ direction = -1
 position = Vector2(80, 175)
 
 [node name="Player" parent="." instance=ExtResource("5_tt4m6")]
-position = Vector2(16, 104)
+position = Vector2(7, 130)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -16)
