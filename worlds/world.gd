@@ -10,8 +10,8 @@ extends Node2D
 
 func _ready() -> void:
 	var used := tile_map.get_used_rect()
-	print(used)
 	var tile_size := tile_map.tile_set.tile_size
+	
 	
 	camera_2d.limit_top = used.position.y * tile_size.y
 	camera_2d.limit_right = used.end.x * tile_size.x
@@ -22,6 +22,9 @@ func _ready() -> void:
 		SoundManager.play_bgm(bgm)
 
 func update_player(pos:Vector2, direction: Player.Direction) -> void:
+	if !is_instance_valid(player):
+		# 等待一帧确保节点准备好
+		await get_tree().process_frame
 	player.position = pos
 	player.fall_from_y = pos.y
 	player.direction = direction

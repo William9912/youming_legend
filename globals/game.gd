@@ -35,14 +35,20 @@ func change_scene(path: String, params := {}) -> void:
 		var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
 		world_states[old_name] = tree.current_scene.to_dict()
 	
-	
+	print("path1 %s" % path)
 	tree.change_scene_to_file(path)
 	if "init" in params:
 		params.init.call()
 	
 	await tree.tree_changed
 	
+	 # 添加额外等待以确保场景完全加载
+	await get_tree().process_frame
+	
+	print("path2 %s" % path)
+	
 	if tree.current_scene is World:
+		print(tree.current_scene)
 		var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
 		if new_name in world_states:
 			tree.current_scene.from_dict(world_states[new_name])
@@ -52,6 +58,7 @@ func change_scene(path: String, params := {}) -> void:
 		if "entry_point" in params:
 			for node in tree.get_nodes_in_group("entry_points"):
 				if node.name == params.entry_point:
+					print("node.global_position    %s" % node.global_position)
 					tree.current_scene.update_player(node.global_position, node.direction)
 					break
 			

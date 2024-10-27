@@ -21,11 +21,11 @@ layer_0/tile_data = PackedInt32Array(655356, 393216, 0, 655357, 393216, 0, 65535
 [node name="MineGate" parent="TileMap" instance=ExtResource("3_oy8e5")]
 position = Vector2(-93, 100)
 scale = Vector2(-1, 1)
-path = "res://worlds/forest.tscn"
-entry_point = "RightEntry"
+path = "res://worlds/fire_knight_scene.tscn"
+entry_point = "RightFireEntryPoint"
 
 [node name="CaveEntity" type="Marker2D" parent="TileMap"]
-position = Vector2(-86, 172)
+position = Vector2(-84, 167)
 script = ExtResource("4_rvtkt")
 
 [node name="SaveStone" parent="TileMap" instance=ExtResource("5_4axsf")]
